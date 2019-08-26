@@ -14,8 +14,7 @@ export class WeatherSearchComponent implements OnInit {
   public weatherForm: FormGroup;
   public weatherData: any;
   public city: City;
-  public isit: boolean = false;
-
+  
   constructor(private fb: FormBuilder,
               private weatherservice: GetWeatherService) {
   }
