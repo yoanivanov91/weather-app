@@ -1,5 +1,5 @@
 
-	<div *ngIf="!submitted && weatherForm.controls.city.errors">
+	<div *ngIf="errmsg && weatherForm.controls.city.errors">
 		<h5>Please enter a city</h5>
 	</div>
 	<div class="wrapper d-flex flex-column align-items-center text-center" *ngIf="submitted && !weatherForm.controls.city.errors">

@@ -14,7 +14,8 @@ export class WeatherSearchComponent implements OnInit {
   public weatherForm: FormGroup;
   public weatherData: any;
   public city: City;
-  
+  public errmsg: String;
+
   constructor(private fb: FormBuilder,
               private weatherservice: GetWeatherService) {
   }
@@ -36,8 +37,10 @@ export class WeatherSearchComponent implements OnInit {
 
     if (this.weatherForm.invalid) {
       this.submitted = false;
+      this.errmsg = "Please enter a city";
       return;
     }
+    this.errmsg = "";
     let result = this.weatherservice.getWeather(formValue.city);
     result.subscribe(data => {
       this.weatherData = data;

@@ -4,12 +4,12 @@
 			<form class="form-inline" [formGroup]="weatherForm" (ngSubmit)="onSubmit(weatherForm.value)">
 				<div class="form-group">
 						<input class="form-control form-control-lg" type="text" placeholder="City" formControlName="city">
-					<button class="btn btn-dark btn-lg ml-2" type="submit" [disabled]="weatherForm.invalid">Go</button>
+					<button class="btn btn-dark btn-lg ml-2" type="submit">Go</button>
 				</div>
 			</form>
 		</div>
 		<div class="row mt-3">
-			<app-weather-show [weatherForm]="weatherForm" [city]="city" [submitted]="submitted"></app-weather-show>
+			<app-weather-show [errmsg]="errmsg" [weatherForm]="weatherForm" [city]="city" [submitted]="submitted"></app-weather-show>
 		</div>
 	</div>
 </div>

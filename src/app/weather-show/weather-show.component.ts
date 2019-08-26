@@ -15,6 +15,7 @@ export class WeatherShowComponent implements OnInit {
   @Input() public submitted;
   @Input() public weatherForm;
   @Input() public city: City;
+  @Input() public errmsg;
   public favoriteData: any;
   public favoriteList: City[];
 
