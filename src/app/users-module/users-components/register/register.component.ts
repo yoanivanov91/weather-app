@@ -60,7 +60,7 @@ export class RegisterComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 () => {
-                    this.router.navigate(['/login'], { queryParams: { registered: true }});
+                    this.router.navigate(['/users/login'], { queryParams: { registered: true }});
                 },
                 error => {
                     this.error = error;
