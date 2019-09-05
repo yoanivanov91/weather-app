@@ -1,0 +1,57 @@
+.bg {
+	background-image: url("../../../images/background.jpg");
+	height: auto;
+	min-height: 100vh;
+  	background-position: center; /* Center the image */
+  	background-repeat: no-repeat; /* Do not repeat the image */
+  	background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.center-me {
+	min-height: 100%;
+	min-height: 100vh;
+}
+
+.wrapper {
+	color: white;
+	background-color: #343a40;
+	border: 1px solid white;
+	padding: 45px;
+	border-radius: 25px;
+	width: 330px;
+}
+
+.extramargin {
+	margin-top: 75px;
+	margin-bottom: 25px;
+}
+
+label {
+	font-size: 18px;
+}
+
+input {
+	text-align: center;
+}
+
+.text18px {
+	font-size: 14px;
+}
+
+.wrapper h2 {
+	margin: 0;
+	padding: 0;
+	margin-bottom: 15px;
+	color: #509EEB;
+}
+
+.wrapper .btn-link {
+	font-size: 18px;
+	color: #509EEB;
+	text-decoration: none;
+}
+
+.wrapper .btn-link:hover {
+	color: white;
+	transition: color 0.3s ease-in;
+}

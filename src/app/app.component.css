@@ -1,8 +1,17 @@
 nav ul li a:hover {
 	color: #509EEB;
+	border-bottom: 3px solid #509EEB;
+	transition: color 0.3s ease-in;
 }
 
 nav ul li a {
 	font-weight: bold;
+
 }
+
+.nav-link {
+	display: inline-block;
+	height: 2.5rem;
+}
+
 

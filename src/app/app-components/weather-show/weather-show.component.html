@@ -1,0 +1,29 @@
+<div *ngIf="errmsg && weatherForm.controls.city.errors">
+	<h5>Please enter a city</h5>
+</div>
+<div class="wrapper d-flex flex-column align-items-center text-center" *ngIf="submitted && !weatherForm.controls.city.errors">
+	<h2 class="results-color">{{city?.name}}</h2>
+	<table width="250px" class="tg">
+		<tr>
+			<td class="text-left">Temperature:</td>
+			<td class="text-right results-color">{{city?.temperature}} C°</td>
+		</tr>
+		<tr>
+			<td class="text-left">Weather:</td>
+			<td class="text-right results-color">{{city?.weather}}</td>
+		</tr>
+		<tr>
+			<td class="text-left">Humidity:</td>
+			<td class="text-right results-color">{{city?.humidity}}%</td>
+		</tr>
+		<tr>
+			<td class="text-left">Windspeed:</td>
+			<td class="text-right results-color">{{city?.windspeed}} km/h</td>
+		</tr>
+	</table>
+	<div *ngIf="currentUser">
+		<button *ngIf="isFavorite(city)" (click)="removeFavorite(city)" class="btn btn-danger btn-lg mt-3">Remove from Favorites</button>
+		<button *ngIf="!isFavorite(city)" (click)="addFavorite(city)" class="btn btn-success btn-lg mt-3">Add to Favorites</button>
+	</div>
+</div>
+

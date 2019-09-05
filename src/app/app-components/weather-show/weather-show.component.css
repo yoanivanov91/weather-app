@@ -1,0 +1,23 @@
+.wrapper {
+	color: white;
+	background-color: #343a40;
+	border: 1px solid white;
+	padding: 45px;
+	border-radius: 25px;
+	width: 330px;
+	
+}
+
+.tg td {
+	font-size: 18px;
+}
+
+.wrapper h2 {
+	margin: 0;
+	padding: 0;
+	margin-bottom: 15px;
+}
+
+.results-color {
+	color: #509EEB;
+}
