@@ -1,11 +1,8 @@
 .wrapper {
-	color: white;
-	background-color: #343a40;
-	border: 1px solid white;
 	padding: 45px;
-	border-radius: 25px;
-	width: 330px;
-	
+	border-radius: 10px;
+	width: 430px;
+	height: 400px;
 }
 
 .tg td {
@@ -19,5 +16,19 @@
 }
 
 .results-color {
-	color: #509EEB;
+	color: #3498db;
+}
+
+.weatherIcon {
+	height: 100px;
+	background-image: linear-gradient(120deg, #3498db, #8e44ad);
+	width: 300px;
+}
+
+.wrapper a {
+	font-size: 30px;
+	float: right;
+	margin-left: 10px;
+	cursor: pointer;
+	text-align: right;
 }

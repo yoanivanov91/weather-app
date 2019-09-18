@@ -1,0 +1,28 @@
+<div class="container-fluid">
+	<div class="container center-me d-flex flex-column justify-content-center align-items-center text-center">
+		<div *ngIf="this.userList().length==0">Users list is empty</div>
+		<div *ngIf="this.userList().length!=0" class="wrapper bg-light text-dark text-center extramargin d-flex flex-column align-items-center">
+			<app-alerts></app-alerts>
+			<div class="row">
+				<div class="col-auto">
+					<h2>Users</h2>
+					<form [formGroup]="usersForm" class="form-inline" (ngSubmit)="onSubmit()">
+						<div class="form-group">
+							<span><i class="fas fa-users mr-2 icons"></i></span>
+							<select class="form-control form-control-lg" placeholder="user" formControlName="user">
+								<option *ngFor="let user of userList()" [ngValue]="user">{{user.username}}</option>
+							</select>
+							<button class="btn btn-dark btn-lg ml-2" type="submit">Go</button>
+						</div> 
+					</form>
+				</div>
+				<div *ngIf="selectedUser" class="col-auto ml-4">
+					<div>
+						<a (click)="closeDetails()" class="text-danger float-right"><i class="fas fa-window-close"></i></a>
+					</div>
+					<div><app-user-details (messageEvent)="messageEventHandler($event)" [selectedUser]="selectedUser"></app-user-details></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

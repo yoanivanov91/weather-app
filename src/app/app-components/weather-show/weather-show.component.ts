@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { City } from '../../others/model/city';
-import { FavoriteService } from '../../others/services/favorite.service';
-import { AuthenticationService } from '../../others/services/authentication.service';
+import { FavoriteService } from '../../services/services/favorite.service';
+import { AuthenticationService } from '../../services/services/authentication.service';
 
 @Component({
   selector: 'app-weather-show',
@@ -10,11 +10,7 @@ import { AuthenticationService } from '../../others/services/authentication.serv
 })
 export class WeatherShowComponent implements OnInit {
 
-  @Input() public weatherData;
-  @Input() public submitted;
-  @Input() public weatherForm;
   @Input() public city: City;
-  @Input() public errmsg;
   public currentUser: any;
 
   constructor(private favoriteservice: FavoriteService,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title }     from '@angular/platform-browser';
-import { AuthenticationService } from './others/services/authentication.service';
+import { AuthenticationService } from './services/services/authentication.service';
 import { filter, map } from 'rxjs/operators';
 
 @Component({
@@ -40,8 +40,18 @@ export class AppComponent implements OnInit {
       });
   }
 
+  navbarClose() {
+    document.getElementById('main-navigation').classList.remove('show');
+     //(<any>$('.navbar-collapse')).collapse('hide');
+  }
+
+  isAdmin(): boolean {
+    if(this.currentUser.role === 'Admin') { return true }
+    else { return false }
+    }
+
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/users']);
+    this.router.navigate(['/login']);
   }
 }

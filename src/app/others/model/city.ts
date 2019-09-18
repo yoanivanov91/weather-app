@@ -6,6 +6,8 @@ export class City {
 	public humidity: number;
 	public windspeed: number;
 	public userid: String;
+	public weatherIcon: String;
+	public addedOnDate: number;
 
 	constructor(name, temperature, weather, humidity, windspeed) {
 		this.name = name;
@@ -14,6 +16,8 @@ export class City {
 		this.humidity = humidity;
 		this.windspeed = windspeed;
 		this.userid = null;
+		this.weatherIcon = null;
+		this.addedOnDate = null;
 	}
 
 }

@@ -3,13 +3,17 @@
 		<div class="row" class="extramargin">
 			<form [formGroup]="weatherForm" class="form-inline" (ngSubmit)="onSubmit(weatherForm.value)">
 				<div class="form-group">
-						<input class="form-control form-control-lg" type="text" placeholder="City" formControlName="city">
-					<button [disabled]="loading" class="btn btn-dark btn-lg ml-2" type="submit"><span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>Go</button>
+					<span><i class="fas fa-sun mr-2 icons text-light"></i></span>
+					<input class="form-control form-control-lg" type="text" placeholder="City" formControlName="city">
+					<button class="btn btn-light btn-lg ml-2" type="submit">Go</button>
 				</div> 
 			</form>
 		</div>
 		<div class="row">
-			<app-weather-show [errmsg]="errmsg" [weatherForm]="weatherForm" [city]="city" [submitted]="submitted"></app-weather-show>
+			<app-alerts></app-alerts>
+			<div *ngIf="submitted && !weatherForm.controls.city.errors">
+				<app-weather-show [city]="city"></app-weather-show>
+			</div>
 		</div>
 	</div>
 </div>

@@ -1,0 +1,41 @@
+.center-me {
+	min-height: 100%;
+	min-height: 100vh;
+}
+
+.wrapper {
+	padding: 45px;
+	border-radius: 10px;
+}
+
+.extramargin {
+	margin-top: 75px;
+	margin-bottom: 25px;
+}
+
+label {
+	font-size: 16px;
+}
+
+input {
+	text-align: center;
+}
+
+.wrapper h2 {
+	margin: 0;
+	padding: 0;
+	margin-bottom: 15px;
+	color: #3498db;
+}
+
+.wrapper .btn-link {
+	font-size: 18px;
+	color: #3498db;
+	text-decoration: none;
+}
+
+.wrapper .btn-link:hover {
+	color: #8e44ad;
+	transition: color 0.3s ease-in;
+	text-decoration: underline;
+}

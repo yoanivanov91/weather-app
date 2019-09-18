@@ -1,0 +1,37 @@
+h2 {
+	margin: 0;
+	padding: 0;
+	margin-bottom: 15px;
+	color: #3498db;
+}
+
+
+label {
+	font-size: 16px;
+}
+
+input {
+	min-width: 150px;
+}
+
+.buttons a {
+	font-size: 30px;
+	color: #343a40;
+	float: right;
+	margin-left: 10px;
+	cursor: pointer;
+	text-align: right;
+}
+
+.buttons a:hover {
+	color: #9A9DA0;
+}
+
+.form-control-plaintext {
+	color: #343a40;
+	font-size: 16px;
+}
+
+form {
+	width: 400px;
+}

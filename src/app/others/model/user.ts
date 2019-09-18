@@ -9,6 +9,7 @@ export class User {
     public email: String;
     public role: String;
     public favorites: City[];
+    public token: String;
 
     constructor(username, password, firstName, lastName, email) { 
     	this.username = username;

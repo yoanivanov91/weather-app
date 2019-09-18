@@ -1,17 +1,54 @@
-nav ul li a:hover {
-	color: #509EEB;
-	border-bottom: 3px solid #509EEB;
-	transition: color 0.3s ease-in;
+.bg {
+	min-height: 100vh;
+	width: 100%;
+	background-image: linear-gradient(120deg, #3498db, #8e44ad);
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+}
+
+body {
+	color: #f8f9fa;
+}
+
+.loggedInUser {
+	color: #3498db;
+	font-weight: bold;
+}
+
+.loggedInUser:hover {
+	color: #8e44ad;
+	text-decoration: none;
 }
 
 nav ul li a {
 	font-weight: bold;
+	color: #f8f9fa;
+}
 
+nav ul li a:hover {
+	color: #3498db;
+	border-bottom: 3px solid #3498db;
+	transition: color 0.3s ease-in;
+}
+
+a.nav-link.active {
+	color: #3498db !important;
+}
+
+.navbar-toggler {
+	border-color: rgba(255, 255, 255, 0.2);
 }
 
 .nav-link {
 	display: inline-block;
 	height: 2.5rem;
+}
+
+
+.menuicon {
+	font-size: 30px;
+	color: #f8f9fa;
 }
 
 

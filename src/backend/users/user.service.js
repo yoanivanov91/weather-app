@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('../others/db');
 const User = db.User;
+const Favorite = db.Favorite;
 
 module.exports = {
     authenticate,
@@ -17,9 +18,11 @@ async function authenticate({ username, password }) {
     const user = await User.findOne({ username });
     if (user && bcrypt.compareSync(password, user.password)) {
         const { password, ...userWithoutPassword } = user.toObject();
+        //const newUser = user.toObject();
         const token = jwt.sign({ sub: user._id }, config.secret);
         return {
             ...userWithoutPassword,
+            //...newUser,
             token
         };
     }
@@ -64,6 +67,10 @@ async function updateUser(id, userParam) {
         userParam.password = bcrypt.hashSync(userParam.password, 10);
     }
 
+    if(!userParam.password) {
+        userParam.password = user.password;
+    }
+
     // copy userParam properties to user
     Object.assign(user, userParam);
 
@@ -71,5 +78,6 @@ async function updateUser(id, userParam) {
 }
 
 async function _deleteUser(id) {
+    await Favorite.deleteMany({userid: id});
     await User.findByIdAndRemove(id);
 }
