@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from '../../../others/model/user';
 import { UserService } from '../../../services/services/user.service';
 import { AlertService } from '../../../services/services/alert.service';
@@ -20,7 +21,8 @@ export class UserListComponent implements OnInit, OnChanges  {
 
   	constructor(private formBuilder: FormBuilder,
           private userService: UserService,
-          private alertService: AlertService) {
+          private alertService: AlertService,
+          private router: Router) {
   		this.userService.getUsers();
   	}
 
@@ -32,6 +34,7 @@ export class UserListComponent implements OnInit, OnChanges  {
 
     ngOnChanges() {
       this.userService.getUsers();
+      this.selectedUser = null;
     }
 
   	userList() {
@@ -44,11 +47,13 @@ export class UserListComponent implements OnInit, OnChanges  {
       if(!this.f.user.value) {
         this.submitted = false;
         this.alertService.sendMessage('Please select an user', 'error');
+        this.closeDetails();
         return;
       }
       this.alertService.clearMessage();
       this.submitted = true;
   		this.selectedUser = this.f.user.value;
+      this.router.navigate(['/users/edit'], { queryParams: { id: this.selectedUser._id }});
   	}
 
     closeDetails() {

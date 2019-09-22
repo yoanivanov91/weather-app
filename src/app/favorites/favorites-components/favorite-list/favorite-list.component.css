@@ -14,5 +14,15 @@
 }
 
 .carousel {
-	width: 430px;
+	width: 900px;
+	height: 440px;
+}
+
+.carousel-indicators li {
+  background-color: #999;
+  background-color: rgba(70, 70, 70, 0.25);
+}
+
+.carousel-indicators .active {
+  background-color: #444;
 }

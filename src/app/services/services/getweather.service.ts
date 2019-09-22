@@ -1,60 +1,67 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+/*import { Subject } from 'rxjs';
+import { City } from '../../others/model/city';
+import { AuthenticationService } from './authentication.service';
+import { AlertService } from './alert.service';*/
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class GetWeatherService {
 	
-  	constructor(private http: HttpClient) { }
+    /*private citySubject = new Subject<City>();
+    public cityObs = this.citySubject.asObservable();
+    private weatherData: any;
+    private currentUser: any;
+    private locationData: any;
+    private city: City;
+    public statusOK: boolean; */
+
+  	constructor(private http: HttpClient
+                /*private authenticationService: AuthenticationService,
+                private alertService: AlertService*/) { 
+      //this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    }
+
+   /* public get status() {
+      return this.statusOK;
+    }
+
+    clearCityValue() {
+      this.citySubject.next(null);
+    }*/
 
   	getWeather(city) {
-  		return this.http.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&appid=' + environment.WeatherApiKey);
+  		return this.http.get('http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&appid=' + environment.WeatherApiKey);
   	}
 
-    getWeatherIconSrc(condition) { //eigene Komponente
-    	let icon: String;
-    switch(condition) {
-      default:
-        icon = '01d';
-        break;
-      case 'clear sky': 
-        icon = '01d';
-        break; 
-      case 'few clouds': 
-        icon = '02d';
-        break; 
-      case 'scattered clouds': 
-        icon = '03d';
-        break;
-      case 'shower rain': 
-        icon = '09d';
-        break;
-      case 'rain': 
-        icon = '10d';
-        break;
-      case 'thunderstorm': 
-        icon = '11d';
-        break;
-      case 'snow': 
-        icon = '13d';
-        break;
-      case 'mist': 
-        icon = '50d';
-        break; 
-      case 'broken clouds': 
-        icon = '04d';
-        break; 
-      case 'overcast clouds':
-        icon = '04d';
-        break;
-      case 'light rain':
-        icon = '10d';
-        break;
+    getLocation() {
+      return this.http.get('http://ip-api.com/json/');
     }
-    let iconSrc = 'http://openweathermap.org/img/wn/' + icon + '@2x.png'
-    return iconSrc;
-  }
+
+    getWeatherByCoordinates(lat, lon) {
+      return this.http.get('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&units=metric&cnt=1&appid=' + environment.WeatherApiKey);
+    }
+
+    /*getWeatherForCity(city) {
+      this.getWeather(city).subscribe(data => {
+        this.weatherData = data;
+        this.city = new City(this.weatherData.name, Math.round(this.weatherData.main.temp), this.weatherData.weather[0].main, Math.round(this.weatherData.main.humidity), this.weatherData.wind.speed);
+        if(this.currentUser) { this.city.userid = this.currentUser._id };
+        this.citySubject.next(this.city);
+        this.alertService.clearMessage();
+        this.statusOK = true;
+      }, () => { this.statusOK = false; this.alertService.sendMessage('City not found', 'error'); });
+    }
+
+    getWeatherForCurrentLocation() {
+      this.getLocation().subscribe(data => {
+        this.locationData = data;
+        this.getWeatherForCity(this.locationData.city);
+      }, () => this.alertService.sendMessage('Location not found', 'error'));
+    }*/
 
 }

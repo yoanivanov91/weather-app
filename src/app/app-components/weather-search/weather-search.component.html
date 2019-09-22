@@ -11,7 +11,7 @@
 		</div>
 		<div class="row">
 			<app-alerts></app-alerts>
-			<div *ngIf="submitted && !weatherForm.controls.city.errors">
+			<div *ngIf="city && submitted && !weatherForm.controls.city.errors">
 				<app-weather-show [city]="city"></app-weather-show>
 			</div>
 		</div>

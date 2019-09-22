@@ -1,27 +1,36 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router'; 
 import { User } from '../../../others/model/user';
 import { UserService } from '../../../services/services/user.service';
+import { ConfirmDialogService } from '../../../services/services/confirm-dialog.service';
 
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.css']
 })
-export class UserDetailsComponent implements OnInit {
+export class UserDetailsComponent implements OnInit, OnDestroy {
 
-	@Input() public selectedUser;
+	public selectedUserData: any;
+  public selectedUser: User;
   public editedUser: User;
 	public detailsForm: FormGroup;
 	public inEditMode = false;
   public submitted = false;
 
   	constructor(private formBuilder: FormBuilder,
-  				private userService: UserService) { }
-
-  	ngOnInit() {
-  		console.log(this.selectedUser);
-  		this.detailsForm = this.formBuilder.group({
+  				private userService: UserService,
+          private confirmDialogService: ConfirmDialogService,
+          private route: ActivatedRoute,
+          private router: Router) {
+      if (this.route.snapshot.queryParams['id']) {
+            this.userService.getUserById(this.route.snapshot.queryParamMap.get('id')).subscribe(x => {
+              this.selectedUserData = x;
+              this.selectedUser = new User(this.selectedUserData.username, this.selectedUserData.password, this.selectedUserData.firstName, this.selectedUserData.lastName, this.selectedUserData.email);
+              this.selectedUser.role = this.selectedUserData.role;
+              this.selectedUser._id = this.selectedUserData._id;
+              this.detailsForm = this.formBuilder.group({
             firstName: [this.selectedUser.firstName, Validators.required],
             lastName: [this.selectedUser.lastName, Validators.required],
             username: [this.selectedUser.username, Validators.required],
@@ -29,11 +38,21 @@ export class UserDetailsComponent implements OnInit {
             email: [this.selectedUser.email, [Validators.required, Validators.email]],
             role: [this.selectedUser.role, [Validators.required]]
         });
+            });
+      }
+    }
+
+  	ngOnInit() {
   	}
+
+    ngOnDestroy() {
+      this.selectedUser = null;
+    }
 
   	deleteUser(user: User) {
       this.submitted = true;
   		this.userService.deleteUser(user);
+      this.router.navigate(['/users']);
   	}
 
     updateUser() {
@@ -47,6 +66,8 @@ export class UserDetailsComponent implements OnInit {
       this.editedUser.role = this.f.role.value;
       this.editedUser._id = this.selectedUser._id;
       this.userService.updateUser(this.editedUser);
+      this.selectedUser = this.editedUser;
+      this.inEditMode = false;
     }
 
     userPassword(): String {
@@ -83,4 +104,15 @@ export class UserDetailsComponent implements OnInit {
       this.f.role.setValue(this.selectedUser.role);
     }
 
+    openEditDialog() {  
+      this.confirmDialogService.confirmThis("You are about to edit the details for user " + this.f.username.value + ". Do you want to proceed?",
+       () => this.updateUser(), () => this.editModeOff()
+      );
+    }
+
+    openDeleteDialog(user: User) {  
+      this.confirmDialogService.confirmThis("You are about to delete " + this.f.username.value + ". Do you want to proceed?",
+       () => this.deleteUser(user), () => this.editModeOff()
+      );
+    }
 }

@@ -5,6 +5,8 @@
 	background-position: center;
   	background-repeat: no-repeat;
   	background-size: cover;
+  	position: relative;
+  	overflow: hidden;
 }
 
 body {
@@ -45,10 +47,21 @@ a.nav-link.active {
 	height: 2.5rem;
 }
 
-
 .menuicon {
 	font-size: 30px;
 	color: #f8f9fa;
 }
 
+
+/* Loading screen wrapper */
+
+.wrap {
+	margin: 0;
+  	padding: 0;
+  	background-image: linear-gradient(120deg, #3498db, #8e44ad);
+  	height: 100vh;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
 

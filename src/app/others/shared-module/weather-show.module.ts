@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WeatherShowComponent } from '../../app-components/weather-show/weather-show.component';
+import { WeatherShowComponent } from './weather-show/weather-show.component';
+import { WeatherIconComponent } from './weather-icon/weather-icon.component';
+import { ToasterModule } from '../../others/shared-module/toaster.module';
 
 @NgModule({
   declarations: [
-  	WeatherShowComponent
+  	WeatherShowComponent,
+    WeatherIconComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ToasterModule
   ],
   exports: [
   	CommonModule,
-  	WeatherShowComponent
+  	WeatherShowComponent,
+    WeatherIconComponent
   ]
 })
 export class WeatherShowModule { }

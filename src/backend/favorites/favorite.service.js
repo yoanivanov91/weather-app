@@ -49,6 +49,6 @@ async function updateFavorite(id, favoriteParam) {
 }
 
 async function _removeFavorite(userid, cityname) {
-    await Favorite.deleteOne({userid: userid}, {name: cityname});
+    await Favorite.deleteOne({name: cityname}, {userid: userid});
     //await Favorite.findByIdAndRemove(id);
 }

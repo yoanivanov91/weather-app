@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile-component/profile.component';
 import { AlertsModule } from '../../others/shared-module/alerts.module'
+import { ConfirmDialogModule } from '../../others/shared-module/confirm-dialog.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { AlertsModule } from '../../others/shared-module/alerts.module'
     CommonModule,
     ReactiveFormsModule,
     ProfileRoutingModule,
-    AlertsModule
+    AlertsModule,
+    ConfirmDialogModule
   ],
   declarations: [
   	ProfileComponent

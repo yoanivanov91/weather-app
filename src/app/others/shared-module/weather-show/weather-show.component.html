@@ -1,0 +1,91 @@
+<div class="wrapper bg-light text-dark d-flex flex-column align-items-center justify-content-center">
+	<div>
+		<h2 class="float-left mr-1">{{city?.name}}, {{city?.country}}</h2>
+		<div *ngIf="currentUser" class="float-right">
+			<a *ngIf="isFavorite(city)" (click)="removeFavorite(city)" class="text-danger"><i class="fas fa-minus-circle"></i></a>
+			<a *ngIf="!isFavorite(city)" (click)="addFavorite(city)" class="text-success"><i class="fas fa-plus-circle"></i></a>
+		</div>
+	</div>
+	<div class="row d-flex justify-content-center align-items-center">
+		<span class="daytext">Today</span>
+	</div>
+	<div class="row">
+		<div class="col-auto d-flex justify-content-center align-items-center">
+			<div class="text-left">
+				<div class="row mb-2">
+					<div class="col-auto d-flex align-items-center">
+						<img [src]="tempSrc">
+					</div>
+					<div class="col-auto d-flex align-items-center">
+						<span>{{city?.temp}} C° ({{city?.maxtemp}} C° / {{city?.mintemp}} C°)</span>
+					</div>
+				</div>
+				<div class="row mb-2">
+					<div class="col-auto d-flex align-items-center">
+						<img [src]="humiditySrc">
+					</div>
+					<div class="col-auto d-flex align-items-center">
+						<span>{{city?.humidity}}%</span>
+					</div>
+				</div>
+				<div class="row mb-2">
+					<div class="col-auto d-flex align-items-center">
+						<img [src]="windSrc">
+					</div>
+					<div class="col-auto d-flex align-items-center">
+						<span>{{city?.windspeed}} km/h</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-auto d-flex justify-content-center align-items-center">
+			<app-weather-icon [height]="120" [width]="120" [weatherCondition]="city.weather"></app-weather-icon>
+		</div>
+	</div>	
+	<div class="row margintop">
+			<div class="col-auto">
+				<div class="row d-flex align-items-center justify-content-center">
+					<span class="daytext">{{city?.day1 | date: 'EEEE'}}</span>
+				</div>
+				<div class="row mb-2">
+					<div class="col-auto d-flex align-items-center">
+						<img [src]="tempSrc">
+					</div>
+					<div class="col-auto d-flex align-items-center">
+						<span>{{city?.day1temp}} C° ({{city?.day1maxtemp}} C° / {{city?.day1mintemp}} C°)</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-auto">
+				<div class="row d-flex align-items-center justify-content-center">
+					<span class="daytext">{{city?.day2 | date: 'EEEE'}}</span>
+				</div>
+				<div class="row mb-2">
+					<div class="col-auto d-flex align-items-center">
+						<img [src]="tempSrc">
+					</div>
+					<div class="col-auto d-flex align-items-center">
+						<span>{{city?.day2temp}} C° ({{city?.day2maxtemp}} C° / {{city?.day2mintemp}} C°)</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-auto">
+				<div class="row d-flex align-items-center justify-content-center">
+					<span class="daytext">{{city?.day3 | date: 'EEEE'}}</span>
+				</div>
+				<div class="row mb-2">
+					<div class="col-auto d-flex align-items-center">
+						<img [src]="tempSrc">
+					</div>
+					<div class="col-auto d-flex align-items-center">
+						<span>{{city?.day3temp}} C° ({{city?.day3maxtemp}} C° / {{city?.day3mintemp}} C°)</span>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<app-toaster *ngIf="message" [header]="header" [message]="message"></app-toaster>
+

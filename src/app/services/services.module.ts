@@ -8,6 +8,7 @@ import { RestApiService } from './services/restapi.service';
 import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { AlertService } from './services/alert.service';
+import { ConfirmDialogService } from './services/confirm-dialog.service';
 
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
@@ -28,7 +29,8 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     RestApiService,
     AuthenticationService,
     UserService,
-    AlertService
+    AlertService,
+    ConfirmDialogService
   ]
 })
 export class ServicesModule {

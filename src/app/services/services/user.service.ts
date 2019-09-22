@@ -34,6 +34,10 @@ export class UserService {
     this.userList = [];
   }
 
+  getUserById(id: String) {
+    return this.restapi.getUserById(id);
+  }
+
   deleteUser(user: User) {
   	if(this.currentUser.role === 'Admin' && user.role !== 'Admin') {
 	    this.restapi.deleteUser(user).subscribe(() => {

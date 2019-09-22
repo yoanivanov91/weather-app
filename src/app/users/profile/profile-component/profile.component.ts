@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../../others/model/user';
 import { UserService } from '../../../services/services/user.service';
 import { AuthenticationService } from '../../../services/services/authentication.service';
+import { ConfirmDialogService } from '../../../services/services/confirm-dialog.service';
 
 @Component({
   selector: 'app-profile',
@@ -20,7 +21,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   	constructor(private formBuilder: FormBuilder,
   				private userService: UserService,
-  				private authenticationService: AuthenticationService) {
+  				private authenticationService: AuthenticationService,
+          private confirmDialogService: ConfirmDialogService) {
   				this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
           console.log(this.currentUser);
   	}
@@ -50,6 +52,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.editedUser.token = this.currentUser.token;
       this.userService.updateUserProfile(this.editedUser);
       setTimeout(() => this.editModeOff(), 100);
+      
     }
 
     get f() { return this.detailsForm.controls; }
@@ -81,6 +84,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.f.email.setValue(this.currentUser.email);
       this.f.role.setValue(this.currentUser.role);
     }
+
+    openDialog() {  
+      this.confirmDialogService.confirmThis("You are about to edit your details. Do you want to proceed?",
+       () => this.updateUserProfile(), () => this.editModeOff()
+      );
+    }  
 
     ngOnDestroy() {
       this.currentUser = null;

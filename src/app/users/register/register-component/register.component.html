@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="container center-me d-flex flex-column justify-content-center align-items-center text-center">
 		<div class="wrapper bg-light text-dark text-center extramargin d-flex flex-column align-items-center">
-			<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+			<app-alerts></app-alerts>
 			<h2>Register</h2>
 			<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 				<div class="form-row">

@@ -1,10 +1,15 @@
+<div class="wrap" *ngIf="showLoadingScreen">
+      <app-loading-screen></app-loading-screen>
+</div>
+<div *ngIf="!showLoadingScreen">
 <nav (clickOutside)="navbarClose()" class="navbar navbar-dark bg-dark fixed-top">
   		<button id="navbutton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navigation" aria-controls="main-navigation" aria-expanded="false" aria-label="Toggle navigation">
     		<span class="menuicon text-light"><i class="fas fa-bars"></i></span>
   		</button>
-      <span *ngIf="currentUser" class="float-right text-light">Hello, <a routerLink="/profile" class="loggedInUser">{{currentUser.firstName}}</a> | {{currentUser.role}}</span> 
-  		<div class="collapse navbar-collapse" id="main-navigation">
-    		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <div><app-current-location></app-current-location></div>
+      <span *ngIf="currentUser" class="text-light userhello">Hello, <a routerLink="/profile" class="loggedInUser">{{currentUser.firstName}}</a> | {{currentUser.role}}</span> 
+  		<div class="collapse navbar-collapse mt-1" id="main-navigation">
+    		<ul class="navbar-nav mr-auto mt-lg-0" (click)="navbarClose()">
       			<li class="nav-item">
         			<a class="nav-link" routerLink="/home" routerLinkActive="active"><i class="fas fa-home mr-1"></i>Home</a>
       			</li>
@@ -21,5 +26,5 @@
     		</ul>
 		</div>
 </nav>
-
-<div class="bg"><router-outlet></router-outlet></div>
+<div [@routerTransition]="getState(o)" class="bg"><router-outlet #o="outlet"></router-outlet></div>
+</div>

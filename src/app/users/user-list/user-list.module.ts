@@ -4,13 +4,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserListRoutingModule } from './user-list-routing.module';
 import { UserListComponent } from './user-list-component/user-list.component';
 import { UserDetailsComponent } from './user-details-component/user-details.component';
+import { AlertsModule } from '../../others/shared-module/alerts.module';
+import { ConfirmDialogModule } from '../../others/shared-module/confirm-dialog.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    UserListRoutingModule
+    UserListRoutingModule,
+    AlertsModule,
+    ConfirmDialogModule
   ],
   declarations: [
     UserListComponent,

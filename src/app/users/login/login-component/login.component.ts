@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) { 
             this.router.navigate(['/home']);
-            console.log("Login component loaded");
         }
     }
 
@@ -43,7 +42,6 @@ export class LoginComponent implements OnInit {
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
         if (this.route.snapshot.queryParams['registered']) {
-            //this.success = 'Registration successful';
             this.alertService.sendMessage('Registration successful', 'success');
         }
     }
