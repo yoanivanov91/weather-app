@@ -14,8 +14,7 @@ export class JwtInterceptor implements HttpInterceptor {
         let currentUser = this.authenticationService.currentUserValue;
         
         if (currentUser && currentUser.token &&
-         !request.url.startsWith('http://api.openweathermap.org/') &&
-         !request.url.startsWith('http://ip-api.com/json/')) {
+         !request.url.startsWith('https://api.openweathermap.org/')) {
             request = request.clone({
                 setHeaders: { 
                     Authorization: `Bearer ${currentUser.token}`

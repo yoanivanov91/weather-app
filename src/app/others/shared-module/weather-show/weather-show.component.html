@@ -2,8 +2,8 @@
 	<div>
 		<h2 class="float-left mr-1">{{city?.name}}, {{city?.country}}</h2>
 		<div *ngIf="currentUser" class="float-right">
-			<a *ngIf="isFavorite(city)" (click)="removeFavorite(city)" class="text-danger"><i class="fas fa-minus-circle"></i></a>
-			<a *ngIf="!isFavorite(city)" (click)="addFavorite(city)" class="text-success"><i class="fas fa-plus-circle"></i></a>
+			<a *ngIf="isFavorite(city)" (click)="removeFavorite(city)" class="text-danger"><i class="fas fa-minus-square"></i></a>
+			<a *ngIf="!isFavorite(city)" (click)="addFavorite(city)" class="text-success"><i class="fas fa-plus-square"></i></a>
 		</div>
 	</div>
 	<div class="row d-flex justify-content-center align-items-center">
@@ -50,7 +50,7 @@
 				</div>
 				<div class="row mb-2">
 					<div class="col-auto d-flex align-items-center">
-						<img [src]="tempSrc">
+						<app-weather-icon [height]="50" [width]="50" [weatherCondition]="city.day1weather"></app-weather-icon>
 					</div>
 					<div class="col-auto d-flex align-items-center">
 						<span>{{city?.day1temp}} C° ({{city?.day1maxtemp}} C° / {{city?.day1mintemp}} C°)</span>
@@ -64,7 +64,7 @@
 				</div>
 				<div class="row mb-2">
 					<div class="col-auto d-flex align-items-center">
-						<img [src]="tempSrc">
+						<app-weather-icon [height]="50" [width]="50" [weatherCondition]="city.day2weather"></app-weather-icon>
 					</div>
 					<div class="col-auto d-flex align-items-center">
 						<span>{{city?.day2temp}} C° ({{city?.day2maxtemp}} C° / {{city?.day2mintemp}} C°)</span>
@@ -78,7 +78,7 @@
 				</div>
 				<div class="row mb-2">
 					<div class="col-auto d-flex align-items-center">
-						<img [src]="tempSrc">
+						<app-weather-icon [height]="50" [width]="50" [weatherCondition]="city.day3weather"></app-weather-icon>
 					</div>
 					<div class="col-auto d-flex align-items-center">
 						<span>{{city?.day3temp}} C° ({{city?.day3maxtemp}} C° / {{city?.day3mintemp}} C°)</span>

@@ -65,3 +65,29 @@ a.nav-link.active {
   	justify-content: center;
 }
 
+.dropdown-menu {
+	background-color: #343a40;
+	margin-top: 10px;
+	border: none;
+	border-radius: 0;
+	z-index: 0;
+	padding-bottom: 0;
+}
+
+.dropdown-item {
+	font-weight: bold;
+	color: #f8f9fa;
+}
+
+.dropdown-item:hover, .dropdown-item.active:hover, .dropdown-item:focus {
+  color: #f8f9fa;
+  text-decoration: none;
+  background-color: #3498db;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  color: #3498db;
+  text-decoration: none;
+  background-color: #343a40;
+}
+

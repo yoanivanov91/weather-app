@@ -1,8 +1,9 @@
 .wrapper {
 	padding: 45px;
 	border-radius: 10px;
-	width: 900px;
-	height: 440px;
+	width: 950px;
+	height: 450px;
+	position: relative;
 }
 
 .tg td {
@@ -46,4 +47,3 @@ img {
 	font-weight: bold;
 	border-bottom: 1px solid;
 }
-

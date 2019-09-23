@@ -4,6 +4,7 @@
 
 export const environment = {
 	WeatherApiKey: '3e7574bd41de5798ca949c58cf88031d',
+	BackendURL: 'http://localhost:80/',
   production: false
 };
 

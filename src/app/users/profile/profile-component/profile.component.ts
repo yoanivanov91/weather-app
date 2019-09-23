@@ -24,11 +24,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
   				private authenticationService: AuthenticationService,
           private confirmDialogService: ConfirmDialogService) {
   				this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-          console.log(this.currentUser);
+          console.log(this.currentUser.token);
   	}
 
   	ngOnInit() {
-  		//console.log(this.currentUser);
   		this.detailsForm = this.formBuilder.group({
             firstName: [this.currentUser.firstName, Validators.required],
             lastName: [this.currentUser.lastName, Validators.required],

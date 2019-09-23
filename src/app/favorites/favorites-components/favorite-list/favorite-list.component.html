@@ -1,9 +1,9 @@
 <div class="container-fluid">
 	<div class="container center-me d-flex flex-column justify-content-center align-items-center text-center">
-		<div class="text-light" *ngIf="this.favoriteList().length==0">
+		<div class="text-light extramargin" *ngIf="!this.favoriteList().length">
 			<h5>You don't have any favorites</h5>
 		</div>
-		<div [class.extramargin]="this.favoriteList().length > 0" id="carousel" class="carousel slide carousel-fade" data-interval="false" data-ride="false">
+		<div *ngIf="this.favoriteList().length" id="carousel" class="extramargin carousel slide carousel-fade" data-interval="false" data-ride="false">
 			<ol *ngIf="this.favoriteList().length > 1" class="carousel-indicators">
     			<li *ngFor="let city of this.favoriteList(); let i = index" data-target="#carousel" [id]="'indi' + i" (click)="slideTo(i)" [class.active]="i===0"></li>
   			</ol>

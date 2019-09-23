@@ -6,8 +6,18 @@
   		<button id="navbutton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navigation" aria-controls="main-navigation" aria-expanded="false" aria-label="Toggle navigation">
     		<span class="menuicon text-light"><i class="fas fa-bars"></i></span>
   		</button>
+
       <div><app-current-location></app-current-location></div>
-      <span *ngIf="currentUser" class="text-light userhello">Hello, <a routerLink="/profile" class="loggedInUser">{{currentUser.firstName}}</a> | {{currentUser.role}}</span> 
+
+      <div *ngIf="currentUser" class="dropdown">
+        <span class="text-light" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hello, <a class="loggedInUser dropdown-toggle" href="#">{{currentUser.firstName}}</a> | {{currentUser.role}}</span>
+        
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" routerLink="/profile" routerLinkActive="active"><i class="fas fa-cogs mr-1"></i>Profile</a>
+          <a class="dropdown-item" routerLink="/login" (click)="logout()"><i class="fas fa-sign-out-alt mr-1"></i>Logout</a>
+        </div>
+      </div>
+
   		<div class="collapse navbar-collapse mt-1" id="main-navigation">
     		<ul class="navbar-nav mr-auto mt-lg-0" (click)="navbarClose()">
       			<li class="nav-item">
@@ -21,7 +31,6 @@
             </li>
             <li class="nav-item">
               <a *ngIf="!currentUser" class="nav-link" routerLink="/login" routerLinkActive="active"><i class="fas fa-sign-in-alt mr-1"></i>Login</a>
-              <a *ngIf="currentUser" class="nav-link" routerLink="/login" routerLinkActive="active" (click)="logout()"><i class="fas fa-sign-out-alt mr-1"></i>Logout</a>
             </li>
     		</ul>
 		</div>

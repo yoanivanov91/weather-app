@@ -1,11 +1,11 @@
-<div class="container-fluid bg">
+<div (clicked)="clickToGo($event)" class="container-fluid bg">
 	<div class="container center-me d-flex flex-column justify-content-center align-items-center">
 		<div class="row" class="extramargin">
 			<form [formGroup]="weatherForm" class="form-inline" (ngSubmit)="onSubmit(weatherForm.value)">
 				<div class="form-group">
 					<span><i class="fas fa-sun mr-2 icons text-light"></i></span>
 					<input class="form-control form-control-lg" type="text" placeholder="City" formControlName="city">
-					<button class="btn btn-light btn-lg ml-2" type="submit">Go</button>
+					<button class="btn btn-light btn-lg ml-2" id="submitbutton" type="submit">Go</button>
 				</div> 
 			</form>
 		</div>

@@ -9,6 +9,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { AlertService } from './services/alert.service';
 import { ConfirmDialogService } from './services/confirm-dialog.service';
+import { CurrentLocationService } from './services/current-location.service';
 
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
@@ -30,7 +31,8 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     AuthenticationService,
     UserService,
     AlertService,
-    ConfirmDialogService
+    ConfirmDialogService,
+    CurrentLocationService
   ]
 })
 export class ServicesModule {

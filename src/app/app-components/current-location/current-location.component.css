@@ -1,5 +1,10 @@
-span {
+a, span {
 	color: #3498db;
 	font-weight: bold;
 	font-size: inherit;
+}
+
+a:hover {
+	color: #8e44ad;
+	text-decoration: none;
 }

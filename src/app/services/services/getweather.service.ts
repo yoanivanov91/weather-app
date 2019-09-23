@@ -35,15 +35,15 @@ export class GetWeatherService {
     }*/
 
   	getWeather(city) {
-  		return this.http.get('http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&appid=' + environment.WeatherApiKey);
+  		return this.http.get('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&appid=' + environment.WeatherApiKey);
   	}
 
     getLocation() {
-      return this.http.get('http://ip-api.com/json/');
+      return this.http.get('https://ip-api.com/json/');
     }
 
     getWeatherByCoordinates(lat, lon) {
-      return this.http.get('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&units=metric&cnt=1&appid=' + environment.WeatherApiKey);
+      return this.http.get('https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&units=metric&cnt=1&appid=' + environment.WeatherApiKey);
     }
 
     /*getWeatherForCity(city) {
