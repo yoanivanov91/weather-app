@@ -28,7 +28,7 @@
     "express": "^4.17.1",
     "express-jwt": "^5.3.1",
     "g": "^2.0.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mongodb": "^3.3.0",
     "mongoose": "^5.6.9",
     "netlify-cli": "^2.15.0",
